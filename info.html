@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Способы оплаты и доставки | Булки от Герыча</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: Roboto, sans-serif;
+            background: #fffaf5;
+            background-image: url('back.webp');
+            background-size: cover;
+        }
+
+        .shapka {
+            background: #8e44ad;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .verhnee-menu {
+            background: #2c3e50;
+            padding: 15px;
+            text-align: center;
+        }
+
+            .verhnee-menu a {
+                color: white;
+                text-decoration: none;
+                margin: 0 15px;
+            }
+
+                .verhnee-menu a:hover {
+                    text-decoration: underline;
+                }
+
+        .konteiner {
+            width: 1000px;
+            margin: auto;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .podval {
+            background: #2c3e50;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* ЗАДАНИЕ 3*/
+        section {
+            margin-bottom: 60px;
+        }
+
+        h2 {
+            color: #ffffff;
+            font-size: 34px;
+            margin-bottom: 20px;
+        }
+
+        .payment-methods {
+            position: relative;
+            display: inline-block;
+            background: white;
+            padding: 40px 50px;
+            border-radius: 12px;
+            margin: 0 auto;
+        }
+
+        .payment-title {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #8e44ad;
+            color: white;
+            padding: 8px 25px;
+            border-radius: 30px;
+            font-size: 18px;
+        }
+
+        .icons {
+            display: inline-block;
+        }
+
+            .icons img {
+                width: 90px;
+                margin: 0 15px;
+                transition: transform 0.3s;
+            }
+
+                .icons img:hover {
+                    transform: scale(1.1);
+                }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 18px 20px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background: #8e44ad;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f4ff;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="shapka">
+        <h1>💪 БУЛКИ ОТ ГЕРЫЧА</h1>
+        <p>"Всё вкусное — в бицепс!"</p>
+    </header>
+
+    <nav class="verhnee-menu">
+        <a href="index.html">Главная</a>
+        <a href="product.html">Каталог</a>
+        <a href="#">Спортпит</a>
+        <a href="#">О Герыче</a>
+        <a href="info.html">Оплата и доставка</a>
+    </nav>
+
+    <main class="konteiner">
+
+        <section>
+            <h2>Способы оплаты</h2>
+            <div class="payment-methods">
+                <div class="payment-title">Выберите способ</div>
+                <div class="icons">
+                    <img src="visa.png" alt="Visa">
+                    <img src="mastercard.png" alt="Mastercard">
+                    <img src="paypal.png" alt="PayPal">
+                    <img src="mir.png" alt="МИР">
+                </div>
+                <p style="margin-top:30px; font-size:18px;">
+                    Оплата картой, PayPal, СБП или наличными при получении.<br>
+                    <strong>Все платежи защищены.</strong>
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Стоимость доставки</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Регион / Способ доставки</th>
+                        <th>Срок доставки</th>
+                        <th>Стоимость</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Самовывоз (Владимир, ул. Горького 87)</td>
+                        <td>в день заказа</td>
+                        <td><strong>0 ₽</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Курьер по Владимиру</td>
+                        <td>1–2 дня</td>
+                        <td>300 ₽</td>
+                    </tr>
+                    <tr>
+                        <td>СДЭК / Boxberry (по России)</td>
+                        <td>2–4 дня</td>
+                        <td>490 ₽</td>
+                    </tr>
+                    <tr>
+                        <td>Почта России</td>
+                        <td>4–7 дней</td>
+                        <td>390 ₽</td>
+                    </tr>
+                    <tr>
+                        <td>Доставка в другие страны</td>
+                        <td>7–14 дней</td>
+                        <td>от 1500 ₽</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <footer class="podval">
+        <p>© 2025 Булки от Герыча. Работаем на твою МАССУ.</p>
+        <p>Наш зал: г. Владимир, ул. Горького, 87 (ВлГУ, 1 корпус)</p>
+        <p>
+            📞 <a href="tel:+74922557788">+7 (4922) 55-77-88</a> 
+            ✉️ <a href="mailto:info@bulki-gericha.ru">info@bulki-gericha.ru</a>
+        </p>
+    </footer>
+
+</body>
+</html>

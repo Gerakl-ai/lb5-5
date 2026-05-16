@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог — Булки от Герыча</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fdf8f3;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .site-header {
+            background-color: #8e44ad;
+            color: #fff;
+            text-align: center;
+            padding: 35px 20px 28px;
+        }
+
+            .site-header h1 {
+                font-size: 28px;
+                font-weight: 800;
+                letter-spacing: 0.5px;
+            }
+
+            .site-header p {
+                font-size: 14px;
+                margin-top: 8px;
+                opacity: 0.95;
+            }
+
+        .main-nav {
+            background-color: #2c3e50;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+            .main-nav a {
+                display: inline-block;
+                color: #ecf0f1;
+                font-size: 14px;
+                font-weight: 600;
+                padding: 14px 18px;
+                transition: background-color 0.3s;
+            }
+
+                .main-nav a:hover {
+                    background-color: #8e44ad;
+                }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 26px;
+            font-weight: 800;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .page-content {
+            display: grid;
+            grid-template-columns: 270px 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .sidebar {
+            background: #fff;
+            border-radius: 10px;
+            padding: 24px;
+            box-shadow: 0 2px 10px rgba(44, 62, 80, 0.07);
+        }
+
+            .sidebar h3 {
+                font-size: 16px;
+                font-weight: 800;
+                color: #8e44ad;
+                margin-bottom: 20px;
+                padding-bottom: 10px;
+                border-bottom: 2px solid #f0e6f6;
+            }
+
+        .filter-section {
+            margin-bottom: 22px;
+        }
+
+            .filter-section h4 {
+                font-size: 13px;
+                font-weight: 700;
+                color: #2c3e50;
+                margin-bottom: 10px;
+                text-transform: uppercase;
+                letter-spacing: 0.3px;
+            }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+            .filter-option input[type="checkbox"],
+            .filter-option input[type="radio"] {
+                margin-right: 10px;
+                width: 16px;
+                height: 16px;
+                accent-color: #8e44ad;
+                cursor: pointer;
+            }
+
+            .filter-option label {
+                font-size: 13px;
+                cursor: pointer;
+                color: #555;
+            }
+
+        .filter-select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #e8dff0;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            background: #fff;
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            color: #2c3e50;
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 22px;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(44, 62, 80, 0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .product-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 10px 28px rgba(44, 62, 80, 0.13);
+            }
+
+        .product-img-wrap {
+            width: 100%;
+            height: 180px;
+            background: #f5f0eb;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .product-img-wrap img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+        .product-body {
+            padding: 16px;
+        }
+
+            .product-body h4 {
+                font-size: 15px;
+                font-weight: 700;
+                color: #2c3e50;
+                margin-bottom: 8px;
+            }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: 800;
+            color: #8e44ad;
+            margin-bottom: 14px;
+        }
+
+        .btn-details {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #8e44ad;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 13px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+            .btn-details:hover {
+                background-color: #7d3c98;
+                transform: translateY(-2px);
+            }
+
+        .feedback-section {
+            margin-top: 45px;
+            background: #fff;
+            border-radius: 10px;
+            padding: 32px;
+            box-shadow: 0 2px 10px rgba(44, 62, 80, 0.07);
+        }
+
+            .feedback-section h3 {
+                font-size: 22px;
+                font-weight: 800;
+                color: #2c3e50;
+                margin-bottom: 24px;
+                padding-bottom: 12px;
+                border-bottom: 2px solid #f0e6f6;
+            }
+
+        .feedback-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .form-group.full {
+                grid-column: 1 / -1;
+            }
+
+            .form-group label {
+                font-size: 13px;
+                font-weight: 700;
+                margin-bottom: 6px;
+                color: #2c3e50;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 12px 14px;
+                border: 2px solid #e8dff0;
+                border-radius: 8px;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 14px;
+                outline: none;
+                transition: border-color 0.3s, box-shadow 0.3s;
+                background-color: #fdf8f3;
+                color: #2c3e50;
+            }
+
+            .form-group textarea {
+                resize: vertical;
+                min-height: 110px;
+            }
+
+        .btn-submit {
+            grid-column: 1 / -1;
+            padding: 14px 40px;
+            background-color: #8e44ad;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            justify-self: start;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .filter-select:focus,
+        .filter-option input:focus,
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #8e44ad;
+            box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.15);
+            background-color: #fff;
+        }
+
+        .btn-submit:hover {
+            background-color: #7d3c98;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(142, 68, 173, 0.3);
+        }
+
+        .site-footer {
+            background-color: #2c3e50;
+            color: #bdc3c7;
+            text-align: center;
+            padding: 28px 20px;
+            margin-top: 50px;
+        }
+
+            .site-footer a {
+                color: #d5a6e6;
+            }
+
+        @media (max-width: 850px) {
+            .page-content {
+                grid-template-columns: 1fr;
+            }
+
+            .feedback-form {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <h1>💪 БУЛКИ ОТ ГЕРЫЧА</h1>
+        <p>"Всё вкусное — в бицепс!"</p>
+    </header>
+
+    <nav class="main-nav">
+        <a href="index.html">Главная</a>
+        <a href="product.html">Каталог</a>
+        <a href="#">Спортпит</a>
+        <a href="#">О Герыче</a>
+        <a href="info.html">Оплата и доставка</a>
+    </nav>
+
+    <div class="container">
+        <h2 class="page-title">Каталог анаболических десертов</h2>
+
+        <div class="page-content">
+
+            <aside class="sidebar">
+                <h3>🔍 Фильтр товаров</h3>
+                <form class="filter-form" action="#" method="GET">
+                    <div class="filter-section">
+                        <h4>Категория</h4>
+                        <div class="filter-option">
+                            <input type="checkbox" id="cat-bulki" name="category" value="bulki" checked>
+                            <label for="cat-bulki">Булки</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="cat-desserts" name="category" value="desserts" checked>
+                            <label for="cat-desserts">Десерты</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="cat-vypechka" name="category" value="vypechka" checked>
+                            <label for="cat-vypechka">Выпечка</label>
+                        </div>
+                    </div>
+                    <div class="filter-section">
+                        <h4>Цена</h4>
+                        <div class="filter-option">
+                            <input type="radio" id="price-all" name="price" value="all" checked>
+                            <label for="price-all">Все цены</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="radio" id="price-low" name="price" value="low">
+                            <label for="price-low">До 390 ₽</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="radio" id="price-high" name="price" value="high">
+                            <label for="price-high">От 400 ₽</label>
+                        </div>
+                    </div>
+                    <div class="filter-section">
+                        <h4>Сортировка</h4>
+                        <select class="filter-select" name="sort">
+                            <option value="default">По умолчанию</option>
+                            <option value="price-asc">По возрастанию цены</option>
+                            <option value="price-desc">По убыванию цены</option>
+                            <option value="name">По названию</option>
+                        </select>
+                    </div>
+                </form>
+            </aside>
+
+            <section class="catalog-grid">
+                <article class="product-card">
+                    <div class="product-img-wrap"><img src="1.png" alt="MASS-Булка Премиум"></div>
+                    <div class="product-body">
+                        <h4>MASS-Булка Премиум</h4>
+                        <div class="product-price">390 ₽</div>
+                        <a href="item1.html" class="btn-details">Подробнее</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-img-wrap"><img src="2.png" alt="Анаболический круассан"></div>
+                    <div class="product-body">
+                        <h4>Анаболический круассан</h4>
+                        <div class="product-price">420 ₽</div>
+                        <a href="item2.html" class="btn-details">Подробнее</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-img-wrap"><img src="3.png" alt="Power Heavy печенье"></div>
+                    <div class="product-body">
+                        <h4>Power Heavy печенье</h4>
+                        <div class="product-price">350 ₽</div>
+                        <a href="item3.html" class="btn-details">Подробнее</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-img-wrap"><img src="4.png" alt="Gains Donut"></div>
+                    <div class="product-body">
+                        <h4>Gains Donut</h4>
+                        <div class="product-price">370 ₽</div>
+                        <a href="item4.html" class="btn-details">Подробнее</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-img-wrap"><img src="5.png" alt="Mass Builder маффин"></div>
+                    <div class="product-body">
+                        <h4>Mass Builder маффин</h4>
+                        <div class="product-price">410 ₽</div>
+                        <a href="item5.html" class="btn-details">Подробнее</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-img-wrap"><img src="6.jpg" alt="Protein Brownie Titan"></div>
+                    <div class="product-body">
+                        <h4>Protein Brownie Titan</h4>
+                        <div class="product-price">430 ₽</div>
+                        <a href="item6.html" class="btn-details">Подробнее</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-img-wrap"><img src="7.jpg" alt="Синабон Roll Bulk"></div>
+                    <div class="product-body">
+                        <h4>Синабон Roll Bulk</h4>
+                        <div class="product-price">390 ₽</div>
+                        <a href="item7.html" class="btn-details">Подробнее</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-img-wrap"><img src="8.jpg" alt="Protein Waffle Stack"></div>
+                    <div class="product-body">
+                        <h4>Protein Waffle Stack</h4>
+                        <div class="product-price">410 ₽</div>
+                        <a href="item8.html" class="btn-details">Подробнее</a>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <section class="feedback-section">
+            <h3>📩 Обратная связь</h3>
+            <form class="feedback-form" action="#" method="POST">
+                <div class="form-group">
+                    <label for="user-name">Имя</label>
+                    <input type="text" id="user-name" name="name" placeholder="Ваше имя" required>
+                </div>
+                <div class="form-group">
+                    <label for="user-email">Email</label>
+                    <input type="email" id="user-email" name="email" placeholder="example@mail.ru" required>
+                </div>
+                <div class="form-group full">
+                    <label for="user-subject">Тема сообщения</label>
+                    <select id="user-subject" name="subject" required>
+                        <option value="" disabled selected>Выберите тему</option>
+                        <option value="order">Вопрос по заказу</option>
+                        <option value="delivery">Доставка</option>
+                        <option value="product">Качество продукции</option>
+                        <option value="cooperation">Сотрудничество</option>
+                    </select>
+                </div>
+                <div class="form-group full">
+                    <label for="user-message">Сообщение</label>
+                    <textarea id="user-message" name="message" placeholder="Напишите ваше сообщение..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Отправить</button>
+            </form>
+        </section>
+    </div>
+
+    <footer class="site-footer">
+        <p>© 2025 Булки от Герыча. Работаем на твою МАССУ.</p>
+        <p>
+            Наш зал: г. Владимир, ул. Горького, 87 (ВлГУ, 1 корпус)<br>
+            📞 <a href="tel:+74922557788">+7 (4922) 55-77-88</a> |
+            ✉️ <a href="mailto:info@bulki-gericha.ru">info@bulki-gericha.ru</a>
+        </p>
+    </footer>
+
+</body>
+</html>
